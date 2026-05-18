@@ -1,0 +1,16 @@
+wpp_perfil/
+wpp_perfil_*/
+**/wpp_perfil/
+**/wpp_perfil_*/
+dados_CONTA_*/
+**/dados_CONTA_*/
+_ui_temp_*/
+**/_ui_temp_*/
+_ui_temp_*.json
+ARQUIVOS MORTOS/
+__pycache__/
+*.db
+*.log
+*.exe
+*.dll
+.venv/
