@@ -59,8 +59,18 @@ def handle_config():
         campaign_state["numbers"] = data.get("numbers", [])
         campaign_state["message_greeting"] = data.get("message_greeting", "")
         campaign_state["message_body"] = data.get("message_body", "")
-        campaign_state["accounts"] = data.get("accounts", campaign_state["accounts"])
+        # Proteção: não permitir que as contas sejam apagadas acidentalmente (bug do retrocesso)
+        incoming_accounts = data.get("accounts", [])
+        if incoming_accounts:
+            campaign_state["accounts"] = incoming_accounts
         return jsonify({"status": "success"})
+    
+    # Proteção de inicialização: se as contas sumiram, restaura o padrão
+    if not campaign_state["accounts"]:
+        campaign_state["accounts"] = [
+            {"id": "CONTA_01", "perfil": "wpp_perfil_01", "active": True, "connected": False},
+            {"id": "CONTA_02", "perfil": "wpp_perfil_02", "active": False, "connected": False}
+        ]
     
     # Update connection status before returning
     for acc in campaign_state["accounts"]:
@@ -123,10 +133,15 @@ active_processes = [] # List to track running worker processes
 
 @app.route('/api/status', methods=['GET'])
 def get_status():
+    # Atualiza em tempo real o status de conexão para a UI
+    for acc in campaign_state["accounts"]:
+        acc["connected"] = check_account_connection(acc["perfil"])
+        
     return jsonify({
         "status": campaign_state["status"],
         "progress": campaign_state["progress"],
-        "logs": campaign_state["logs"][-50:]
+        "logs": campaign_state["logs"][-50:],
+        "accounts": campaign_state["accounts"]
     })
 
 @app.route('/api/pause', methods=['POST'])
