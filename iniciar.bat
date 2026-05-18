@@ -40,11 +40,11 @@ if errorlevel 1 (
 
 :: Iniciar a interface Web e abrir no navegador
 echo [3/3] Iniciando o servidor do aplicativo...
-echo Servidor rodando em http://127.0.0.1:5000/
+echo Servidor rodando em http://127.0.0.1:5005/
 echo.
 
 :: Abrir o navegador automaticamente
-start http://127.0.0.1:5000/
+start http://127.0.0.1:5005/
 
 :: Iniciar app do Flask
 python WaSender_UI/app.py

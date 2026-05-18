@@ -242,7 +242,7 @@ def run_orchestrator():
                 "--perfil", conta["perfil"],
                 "--numeros-json", temp_json,
                 "--arquivo-memoria", MEMORIA_FILE,
-                "--ui-report-url", "http://127.0.0.1:5000/api/report_progress"
+                "--ui-report-url", "http://127.0.0.1:5005/api/report_progress"
             ]
 
             if campaign_state["image_path"]:
@@ -274,4 +274,4 @@ def run_orchestrator():
         campaign_state["logs"].append(f"❌ Erro no orquestrador: {str(e)}")
 
 if __name__ == '__main__':
-    app.run(host='127.0.0.1', port=5000, debug=True)
+    app.run(host='127.0.0.1', port=5005, debug=True)
