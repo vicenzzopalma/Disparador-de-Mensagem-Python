@@ -331,7 +331,12 @@
             <!-- Right: Config & Log -->
             <div style="display: flex; flex-direction: column; gap: 20px;">
                 <div class="card">
-                    <div class="card-header"><i data-lucide="user-check"></i> Gerenciar Contas</div>
+                    <div class="card-header" style="display: flex; justify-content: space-between; align-items: center;">
+                        <div style="display: flex; align-items: center; gap: 8px;"><i data-lucide="user-check"></i> Gerenciar Contas</div>
+                        <button class="btn btn-outline" style="padding: 4px 8px; font-size: 0.7rem;" onclick="reloadDaemons()">
+                            <i data-lucide="refresh-cw" style="width: 14px; height: 14px;"></i> Recarregar Monitores
+                        </button>
+                    </div>
                     <div class="card-body" id="accounts-list">
                         <!-- Accounts will be injected here -->
                     </div>
@@ -442,7 +447,11 @@
                 headers: {'Content-Type': 'application/json'},
                 body: JSON.stringify({id, perfil})
             });
-            alert(`Iniciando janela de conexão para ${id}. Escaneie o QR Code no Chrome.`);
+            // O alerta foi removido para usar algo menos intrusivo se necessário
+        }
+
+        async function reloadDaemons() {
+            await fetch(`${API_BASE}/reload_daemons`, { method: 'POST' });
         }
 
         async function toggleAccount(id) {

@@ -282,7 +282,11 @@ def main():
             cmd_send = os.path.join(diretorio_conta, "cmd_send.json")
 
             if os.path.exists(cmd_show):
-                driver.maximize_window()
+                try:
+                    driver.set_window_position(0, 0)
+                    driver.maximize_window()
+                except:
+                    pass
                 os.remove(cmd_show)
             
             if os.path.exists(cmd_hide):
@@ -314,5 +318,20 @@ def main():
                 f.write(f"\nCRITICAL DAEMON ERROR: {traceback.format_exc()}\n")
             time.sleep(5)
 
+def safe_main():
+    try:
+        main()
+    except Exception as e:
+        import sys
+        conta_id = "UNKNOWN"
+        for i, arg in enumerate(sys.argv):
+            if arg == "--conta-id" and i + 1 < len(sys.argv):
+                conta_id = sys.argv[i + 1]
+        
+        crash_log = os.path.join(os.getcwd(), f"dados_{conta_id}", "crash_daemon.txt")
+        os.makedirs(os.path.dirname(crash_log), exist_ok=True)
+        with open(crash_log, "a") as f:
+            f.write(f"\nCRITICAL DAEMON STARTUP ERROR: {traceback.format_exc()}\n")
+
 if __name__ == "__main__":
-    main()
+    safe_main()

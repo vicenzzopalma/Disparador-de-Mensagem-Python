@@ -188,12 +188,34 @@ def report_progress():
             campaign_state["logs"].append(f"[{conta_id}] {data.get('log')}")
     
     if "Concluido" in data.get("action", "") or "finalizada" in data.get("log", ""):
-        # Verifica se todas as contas terminaram para alterar status para idle
-        # Por simplicidade o orquestrador fará isso.
         pass
 
     return jsonify({"status": "ok"})
 
+@app.route('/api/reload_daemons', methods=['POST'])
+def reload_daemons():
+    global daemons
+    for p in daemons:
+        try:
+            p.terminate()
+            subprocess.run(['taskkill', '/F', '/T', '/PID', str(p.pid)], capture_output=True)
+        except:
+            pass
+    daemons.clear()
+    
+    for acc in campaign_state["accounts"]:
+        acc["status_label"] = "Carregando"
+        cmd = [
+            sys.executable, os.path.join(REALEZA_DIR, "daemon_worker.py"),
+            "--conta-id", acc["id"],
+            "--perfil", acc["perfil"],
+            "--status-url", "http://127.0.0.1:5005/api/daemon_status"
+        ]
+        p = subprocess.Popen(cmd, cwd=REALEZA_DIR, creationflags=subprocess.CREATE_NO_WINDOW if os.name == 'nt' else 0)
+        daemons.append(p)
+        campaign_state["logs"].append(f"🔄 Daemon {acc['id']} recarregado.")
+        
+    return jsonify({"status": "reloaded"})
 
 def run_orchestrator():
     try:
