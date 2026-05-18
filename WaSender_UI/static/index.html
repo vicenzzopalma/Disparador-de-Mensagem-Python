@@ -1,0 +1,550 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>WaSender Realeza | Premium Automation</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <style>
+        :root {
+            --bg-main: #0f172a;
+            --bg-card: rgba(30, 41, 59, 0.7);
+            --accent: #10b981;
+            --accent-gold: #fbbf24;
+            --text-primary: #f8fafc;
+            --text-secondary: #94a3b8;
+            --border: rgba(255, 255, 255, 0.1);
+            --glass: rgba(255, 255, 255, 0.05);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Inter', sans-serif;
+        }
+
+        body {
+            background: var(--bg-main);
+            color: var(--text-primary);
+            min-height: 100vh;
+            display: flex;
+        }
+
+        /* Sidebar */
+        .sidebar {
+            width: 240px;
+            background: rgba(15, 23, 42, 0.8);
+            border-right: 1px solid var(--border);
+            display: flex;
+            flex-direction: column;
+            padding: 20px;
+            backdrop-filter: blur(10px);
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            font-size: 1.2rem;
+            font-weight: 700;
+            color: var(--accent-gold);
+            margin-bottom: 40px;
+        }
+
+        .nav-item {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            padding: 12px;
+            color: var(--text-secondary);
+            text-decoration: none;
+            border-radius: 8px;
+            transition: 0.2s;
+            margin-bottom: 4px;
+        }
+
+        .nav-item:hover, .nav-item.active {
+            background: var(--glass);
+            color: var(--text-primary);
+        }
+
+        .nav-item i { width: 18px; }
+
+        /* Main Content */
+        .main-container {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            background: radial-gradient(circle at top right, rgba(16, 185, 129, 0.05), transparent);
+            overflow-y: auto;
+        }
+
+        .header {
+            height: 64px;
+            border-bottom: 1px solid var(--border);
+            display: flex;
+            align-items: center;
+            padding: 0 30px;
+            justify-content: space-between;
+            backdrop-filter: blur(5px);
+        }
+
+        .content-grid {
+            padding: 20px;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 20px;
+            flex: 1;
+        }
+
+        /* Cards */
+        .card {
+            background: var(--bg-card);
+            border: 1px solid var(--border);
+            border-radius: 12px;
+            display: flex;
+            flex-direction: column;
+            backdrop-filter: blur(12px);
+            box-shadow: 0 4px 20px rgba(0,0,0,0.2);
+        }
+
+        .card-header {
+            padding: 15px;
+            border-bottom: 1px solid var(--border);
+            font-weight: 600;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            color: var(--text-secondary);
+        }
+
+        .card-body {
+            padding: 15px;
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+        }
+
+        /* Inputs */
+        textarea {
+            background: rgba(0,0,0,0.2);
+            border: 1px solid var(--border);
+            border-radius: 8px;
+            color: white;
+            padding: 12px;
+            resize: none;
+            width: 100%;
+            height: 100%;
+            outline: none;
+            font-size: 0.9rem;
+        }
+
+        textarea:focus { border-color: var(--accent); }
+
+        .btn {
+            padding: 10px 20px;
+            border-radius: 8px;
+            border: none;
+            font-weight: 600;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            transition: 0.2s;
+        }
+
+        .btn-primary { background: var(--accent); color: white; }
+        .btn-primary:hover { filter: brightness(1.1); }
+        .btn-outline { background: var(--glass); border: 1px solid var(--border); color: white; }
+
+        /* Numbers List */
+        .numbers-list {
+            list-style: none;
+            overflow-y: auto;
+            max-height: 400px;
+        }
+        .number-item {
+            padding: 8px 0;
+            border-bottom: 1px solid var(--border);
+            font-size: 0.85rem;
+            color: var(--text-secondary);
+        }
+
+        /* Accounts List */
+        .account-item {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 10px;
+            background: var(--glass);
+            border-radius: 8px;
+            margin-bottom: 8px;
+        }
+
+        /* Progress Area */
+        .progress-section {
+            height: 120px;
+            background: rgba(0,0,0,0.3);
+            border-top: 1px solid var(--border);
+            padding: 15px 30px;
+            display: flex;
+            align-items: center;
+            gap: 40px;
+        }
+
+        .progress-bar-container {
+            flex: 1;
+        }
+
+        .progress-label {
+            display: flex;
+            justify-content: space-between;
+            font-size: 0.85rem;
+            margin-bottom: 8px;
+            color: var(--text-secondary);
+        }
+
+        .progress-track {
+            height: 8px;
+            background: var(--border);
+            border-radius: 4px;
+            overflow: hidden;
+        }
+
+        .progress-fill {
+            height: 100%;
+            background: linear-gradient(90deg, var(--accent), #34d399);
+            width: 0%;
+            transition: width 0.5s ease;
+        }
+
+        .stat-box {
+            text-align: center;
+        }
+
+        .stat-value {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: var(--accent);
+        }
+
+        .stat-label {
+            font-size: 0.75rem;
+            color: var(--text-secondary);
+            text-transform: uppercase;
+        }
+
+        /* Log Terminal */
+        .log-terminal {
+            background: #000;
+            border-radius: 8px;
+            padding: 10px;
+            font-family: monospace;
+            font-size: 0.8rem;
+            height: 150px;
+            overflow-y: auto;
+            color: #10b981;
+        }
+
+        .log-entry { margin-bottom: 4px; }
+        .log-time { color: #475569; margin-right: 8px; }
+
+        /* Custom Scrollbar */
+        ::-webkit-scrollbar { width: 6px; }
+        ::-webkit-scrollbar-track { background: transparent; }
+        ::-webkit-scrollbar-thumb { background: var(--border); border-radius: 10px; }
+        ::-webkit-scrollbar-thumb:hover { background: var(--text-secondary); }
+
+    </style>
+</head>
+<body>
+    <div class="sidebar">
+        <div class="logo">
+            <i data-lucide="crown"></i>
+            <span>WaSender Realeza</span>
+        </div>
+        <nav>
+            <a href="#" class="nav-item active"><i data-lucide="send"></i> Bulk Sender</a>
+            <a href="#" class="nav-item"><i data-lucide="users"></i> Groups</a>
+            <a href="#" class="nav-item"><i data-lucide="message-square"></i> Chatbot</a>
+            <a href="#" class="nav-item"><i data-lucide="settings"></i> Settings</a>
+        </nav>
+        <div style="margin-top: auto;">
+            <div class="nav-item"><i data-lucide="help-circle"></i> Support</div>
+        </div>
+    </div>
+
+    <div class="main-container">
+        <header class="header">
+            <div style="display: flex; align-items: center; gap: 10px;">
+                <i data-lucide="send" style="color: var(--accent);"></i>
+                <h2 style="font-size: 1.1rem; font-weight: 600;">Disparo em Massa</h2>
+            </div>
+            <div style="display: flex; gap: 12px;">
+                <button class="btn btn-outline" id="btn-clear" style="padding: 8px 16px;"><i data-lucide="trash-2" style="width:16px;"></i> Limpar Lista</button>
+            </div>
+        </header>
+
+        <div class="content-grid">
+            <!-- Left: Numbers -->
+            <div class="card">
+                <div class="card-header"><i data-lucide="list"></i> Lista de Números</div>
+                <div class="card-body">
+                    <textarea id="input-numbers" placeholder="Cole os números aqui (um por linha)..."></textarea>
+                    <div style="margin-top: 15px; display: flex; flex-direction: column; gap: 8px;">
+                        <button class="btn btn-outline" style="width: 100%;"><i data-lucide="upload"></i> Importar Excel/CSV</button>
+                        <div style="font-size: 0.75rem; color: var(--text-secondary); text-align: center;">Total: <span id="count-numbers">0</span> contatos</div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Middle: Messages -->
+            <div class="card">
+                <div class="card-header"><i data-lucide="message-circle"></i> Mensagens Segmentadas</div>
+                <div class="card-body">
+                    <div style="margin-bottom: 15px;">
+                        <label style="font-size: 0.75rem; color: var(--text-secondary); display: block; margin-bottom: 5px;">SAUDAÇÃO (GREETING)</label>
+                        <textarea id="input-greeting" style="height: 80px;" placeholder="Ex: Olá {{nome}}, tudo bem?"></textarea>
+                    </div>
+                    <div style="flex: 1; margin-bottom: 15px;">
+                        <label style="font-size: 0.75rem; color: var(--text-secondary); display: block; margin-bottom: 5px;">CORPO DA MENSAGEM</label>
+                        <textarea id="input-body" placeholder="Sua proposta principal aqui..."></textarea>
+                    </div>
+                    
+                    <div style="margin-top: 10px;">
+                        <label style="font-size: 0.75rem; color: var(--text-secondary); display: block; margin-bottom: 5px;">ANEXAR IMAGEM (ANTI-BAN AUTO-EDIT)</label>
+                        <div style="display: flex; gap: 10px; align-items: center;">
+                            <input type="file" id="input-image" style="display: none;" accept="image/*">
+                            <button class="btn btn-outline" style="flex: 1;" onclick="document.getElementById('input-image').click()">
+                                <i data-lucide="image"></i> Selecionar Imagem
+                            </button>
+                            <div id="image-status" style="font-size: 0.7rem; color: var(--accent);">Nenhuma</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Right: Config & Log -->
+            <div style="display: flex; flex-direction: column; gap: 20px;">
+                <div class="card">
+                    <div class="card-header"><i data-lucide="user-check"></i> Gerenciar Contas</div>
+                    <div class="card-body" id="accounts-list">
+                        <!-- Accounts will be injected here -->
+                    </div>
+                </div>
+                <div class="card" style="flex: 1;">
+                    <div class="card-header"><i data-lucide="terminal"></i> Log de Operações</div>
+                    <div class="card-body">
+                        <div class="log-terminal" id="log-display">
+                            <div class="log-entry">Aguardando início...</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div> <!-- End content-grid -->
+
+        <!-- Action Bar -->
+        <div style="display: flex; gap: 15px; align-items: center; justify-content: center; padding: 20px 0; background: rgba(0,0,0,0.2); border-radius: 12px; margin: 20px 30px;">
+            <button class="btn btn-primary" id="btn-start-main" style="padding: 12px 40px; font-size: 1rem; box-shadow: 0 4px 15px rgba(16, 185, 129, 0.3);">
+                <i data-lucide="play"></i> INICIAR CAMPANHA
+            </button>
+            <button class="btn btn-outline" id="btn-pause" style="padding: 12px 25px; border-color: var(--accent-gold); color: var(--accent-gold);">
+                <i data-lucide="pause"></i> PAUSAR / RETOMAR
+            </button>
+            <button class="btn btn-outline" id="btn-stop" style="padding: 12px 25px; border-color: #ef4444; color: #ef4444;">
+                <i data-lucide="square"></i> PARAR TUDO
+            </button>
+        </div>
+
+        <div class="progress-section">
+            <div class="stat-box">
+                <div class="stat-value" id="stat-sent">0</div>
+                <div class="stat-label">Enviados</div>
+            </div>
+            <div class="stat-box">
+                <div class="stat-value" style="color: #ef4444;" id="stat-failed">0</div>
+                <div class="stat-label">Falhas</div>
+            </div>
+            <div class="progress-bar-container">
+                <div class="progress-label">
+                    <span id="current-action">Ocioso</span>
+                    <span id="progress-percent">0%</span>
+                </div>
+                <div class="progress-track">
+                    <div class="progress-fill" id="progress-fill"></div>
+                </div>
+                <div style="display: flex; justify-content: space-between; margin-top: 8px; font-size: 0.75rem; color: var(--text-secondary);">
+                    <span>Velocidade: <span id="stat-speed">0 msg/h</span></span>
+                    <span>ETA: <span id="stat-eta">--:--:--</span></span>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        lucide.createIcons();
+
+        const API_BASE = "http://127.0.0.1:5000/api";
+        let state = {
+            numbers: [],
+            message_greeting: "",
+            message_body: "",
+            accounts: [],
+            image_path: null
+        };
+
+        // Initialize
+        async function init() {
+            const resp = await fetch(`${API_BASE}/config`);
+            const data = await resp.json();
+            state = data;
+            
+            document.getElementById('input-numbers').value = state.numbers.join('\n');
+            document.getElementById('input-greeting').value = state.message_greeting;
+            document.getElementById('input-body').value = state.message_body;
+            if (state.image_path) {
+                document.getElementById('image-status').innerText = "Processada ✓";
+            }
+
+            renderAccounts();
+            setInterval(fetchStatus, 2000);
+        }
+
+        function renderAccounts() {
+            const container = document.getElementById('accounts-list');
+            container.innerHTML = state.accounts.map(acc => `
+                <div class="account-item" style="flex-direction: column; align-items: stretch; gap: 5px;">
+                    <div style="display: flex; justify-content: space-between; align-items: center;">
+                        <div style="display: flex; align-items: center; gap: 10px;">
+                            <input type="checkbox" ${acc.active ? 'checked' : ''} onchange="toggleAccount('${acc.id}')">
+                            <span style="font-size: 0.85rem; font-weight: 600;">${acc.id}</span>
+                        </div>
+                        <span style="font-size: 0.65rem; padding: 2px 6px; border-radius: 4px; background: ${acc.connected ? 'rgba(16, 185, 129, 0.2)' : 'rgba(239, 68, 68, 0.2)'}; color: ${acc.connected ? '#10b981' : '#ef4444'}; border: 1px solid ${acc.connected ? '#10b981' : '#ef4444'};">
+                            ${acc.connected ? 'CONECTADO' : 'NÃO CONECTADO'}
+                        </span>
+                    </div>
+                    <button class="btn btn-outline" style="padding: 4px 8px; font-size: 0.7rem; justify-content: center;" onclick="connectAccount('${acc.id}', '${acc.perfil}')">
+                        <i data-lucide="qr-code" style="width: 12px;"></i> ${acc.connected ? 'Reconectar / Atualizar' : 'Conectar Agora'}
+                    </button>
+                </div>
+            `).join('');
+            lucide.createIcons();
+        }
+
+        async function connectAccount(id, perfil) {
+            await fetch(`${API_BASE}/connect`, {
+                method: 'POST',
+                headers: {'Content-Type': 'application/json'},
+                body: JSON.stringify({id, perfil})
+            });
+            alert(`Iniciando janela de conexão para ${id}. Escaneie o QR Code no Chrome.`);
+        }
+
+        async function toggleAccount(id) {
+            state.accounts = state.accounts.map(acc => acc.id === id ? {...acc, active: !acc.active} : acc);
+            saveConfig();
+        }
+
+        async function saveConfig() {
+            state.numbers = document.getElementById('input-numbers').value.split('\n').filter(n => n.trim() !== '');
+            state.message_greeting = document.getElementById('input-greeting').value;
+            state.message_body = document.getElementById('input-body').value;
+            
+            await fetch(`${API_BASE}/config`, {
+                method: 'POST',
+                headers: {'Content-Type': 'application/json'},
+                body: JSON.stringify(state)
+            });
+        }
+
+        // Image Upload Handler
+        document.getElementById('input-image').onchange = async (e) => {
+            const file = e.target.files[0];
+            if (!file) return;
+
+            document.getElementById('image-status').innerText = "Processando...";
+            const formData = new FormData();
+            formData.append('image', file);
+
+            const resp = await fetch(`${API_BASE}/upload_image`, {
+                method: 'POST',
+                body: formData
+            });
+            const data = await resp.json();
+            if (data.status === "success") {
+                document.getElementById('image-status').innerText = "Processada ✓";
+                state.image_path = data.path;
+            } else {
+                document.getElementById('image-status').innerText = "Erro!";
+            }
+        };
+
+        const startCampaign = async () => {
+            await saveConfig();
+            const resp = await fetch(`${API_BASE}/start`, {method: 'POST'});
+            const data = await resp.json();
+            if (data.error) alert(data.error);
+        };
+
+        document.getElementById('btn-start-main').onclick = startCampaign;
+
+        document.getElementById('btn-pause').onclick = async () => {
+            const resp = await fetch(`${API_BASE}/pause`, {method: 'POST'});
+            const data = await resp.json();
+            if (data.error) alert(data.error);
+        };
+
+        document.getElementById('btn-stop').onclick = async () => {
+            if (confirm("Tem certeza que deseja PARAR todos os robôs?")) {
+                await fetch(`${API_BASE}/stop`, {method: 'POST'});
+            }
+        };
+
+        async function fetchStatus() {
+            const resp = await fetch(`${API_BASE}/status`);
+            const data = await resp.json();
+            
+            // Update Stats
+            let totalSent = 0;
+            let totalFailed = 0;
+            let totalNumbers = state.numbers.length || 1;
+            let currentAction = "Ocioso";
+            let eta = "--:--:--";
+
+            Object.values(data.progress).forEach(p => {
+                totalSent += p.sent || 0;
+                totalFailed += p.failed || 0;
+                if (p.action) currentAction = p.action;
+                if (p.eta) eta = p.eta;
+            });
+
+            document.getElementById('stat-sent').innerText = totalSent;
+            document.getElementById('stat-failed').innerText = totalFailed;
+            document.getElementById('current-action').innerText = currentAction;
+            document.getElementById('stat-eta').innerText = eta;
+
+            const percent = Math.min(100, ((totalSent + totalFailed) / totalNumbers) * 100);
+            document.getElementById('progress-percent').innerText = `${Math.round(percent)}%`;
+            document.getElementById('progress-fill').style.width = `${percent}%`;
+
+            // Update Logs
+            const logDisplay = document.getElementById('log-display');
+            logDisplay.innerHTML = data.logs.map(log => `
+                <div class="log-entry"><span class="log-time">[${new Date().toLocaleTimeString()}]</span> ${log}</div>
+            `).join('');
+            logDisplay.scrollTop = logDisplay.scrollHeight;
+        }
+
+        document.getElementById('input-numbers').oninput = (e) => {
+            const count = e.target.value.split('\n').filter(n => n.trim() !== '').length;
+            document.getElementById('count-numbers').innerText = count;
+        };
+
+        init();
+    </script>
+</body>
+</html>

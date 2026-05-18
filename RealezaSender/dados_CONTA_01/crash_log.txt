@@ -1,0 +1,170 @@
+
+========================================
+Fri May 15 14:35:53 2026
+CRITICAL ERROR in Worker CONTA_01:
+Traceback (most recent call last):
+  File "C:\Users\vicenzzo.palma\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\urllib3\connectionpool.py", line 534, in _make_request
+    response = conn.getresponse()
+  File "C:\Users\vicenzzo.palma\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\urllib3\connection.py", line 571, in getresponse
+    httplib_response = super().getresponse()
+  File "C:\Users\vicenzzo.palma\AppData\Local\Python\pythoncore-3.14-64\Lib\http\client.py", line 1459, in getresponse
+    response.begin()
+    ~~~~~~~~~~~~~~^^
+  File "C:\Users\vicenzzo.palma\AppData\Local\Python\pythoncore-3.14-64\Lib\http\client.py", line 336, in begin
+    version, status, reason = self._read_status()
+                              ~~~~~~~~~~~~~~~~~^^
+  File "C:\Users\vicenzzo.palma\AppData\Local\Python\pythoncore-3.14-64\Lib\http\client.py", line 297, in _read_status
+    line = str(self.fp.readline(_MAXLINE + 1), "iso-8859-1")
+               ~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^
+  File "C:\Users\vicenzzo.palma\AppData\Local\Python\pythoncore-3.14-64\Lib\socket.py", line 729, in readinto
+    return self._sock.recv_into(b)
+           ~~~~~~~~~~~~~~~~~~~~^^^
+TimeoutError: timed out
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "C:\Users\vicenzzo.palma\Documents\Wa Sender 3.7.0 Atualizado\RealezaSender\worker.py", line 194, in main
+    driver.get(url)
+    ~~~~~~~~~~^^^^^
+  File "C:\Users\vicenzzo.palma\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\undetected_chromedriver\__init__.py", line 665, in get
+    return super().get(url)
+           ~~~~~~~~~~~^^^^^
+  File "C:\Users\vicenzzo.palma\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\selenium\webdriver\remote\webdriver.py", line 488, in get
+    self.execute(Command.GET, {"url": url})
+    ~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\vicenzzo.palma\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\selenium\webdriver\remote\webdriver.py", line 465, in execute
+    response = cast(RemoteConnection, self.command_executor).execute(driver_command, params)
+  File "C:\Users\vicenzzo.palma\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\selenium\webdriver\remote\remote_connection.py", line 407, in execute
+    return self._request(command_info[0], url, body=data)
+           ~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\vicenzzo.palma\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\selenium\webdriver\remote\remote_connection.py", line 431, in _request
+    response = self._conn.request(method, url, body=body, headers=headers, timeout=self._client_config.timeout)
+  File "C:\Users\vicenzzo.palma\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\urllib3\_request_methods.py", line 143, in request
+    return self.request_encode_body(
+           ~~~~~~~~~~~~~~~~~~~~~~~~^
+        method, url, fields=fields, headers=headers, **urlopen_kw
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "C:\Users\vicenzzo.palma\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\urllib3\_request_methods.py", line 278, in request_encode_body
+    return self.urlopen(method, url, **extra_kw)
+           ~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\vicenzzo.palma\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\urllib3\poolmanager.py", line 457, in urlopen
+    response = conn.urlopen(method, u.request_uri, **kw)
+  File "C:\Users\vicenzzo.palma\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\urllib3\connectionpool.py", line 842, in urlopen
+    retries = retries.increment(
+        method, url, error=new_e, _pool=self, _stacktrace=sys.exc_info()[2]
+    )
+  File "C:\Users\vicenzzo.palma\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\urllib3\util\retry.py", line 498, in increment
+    raise reraise(type(error), error, _stacktrace)
+          ~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\vicenzzo.palma\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\urllib3\util\util.py", line 39, in reraise
+    raise value
+  File "C:\Users\vicenzzo.palma\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\urllib3\connectionpool.py", line 788, in urlopen
+    response = self._make_request(
+        conn,
+    ...<10 lines>...
+        **response_kw,
+    )
+  File "C:\Users\vicenzzo.palma\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\urllib3\connectionpool.py", line 536, in _make_request
+    self._raise_timeout(err=e, url=url, timeout_value=read_timeout)
+    ~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\vicenzzo.palma\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\urllib3\connectionpool.py", line 367, in _raise_timeout
+    raise ReadTimeoutError(
+        self, url, f"Read timed out. (read timeout={timeout_value})"
+    ) from err
+urllib3.exceptions.ReadTimeoutError: HTTPConnectionPool(host='localhost', port=49542): Read timed out. (read timeout=120)
+
+
+========================================
+Fri May 15 14:52:04 2026
+CRITICAL ERROR in Worker CONTA_01:
+Traceback (most recent call last):
+  File "C:\Users\vicenzzo.palma\Documents\Wa Sender 3.7.0 Atualizado\RealezaSender\worker.py", line 67, in digitar_como_humano
+    elemento.send_keys(letra)
+    ~~~~~~~~~~~~~~~~~~^^^^^^^
+  File "C:\Users\vicenzzo.palma\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\selenium\webdriver\remote\webelement.py", line 276, in send_keys
+    self._execute(
+    ~~~~~~~~~~~~~^
+        Command.SEND_KEYS_TO_ELEMENT, {"text": "".join(keys_to_typing(value)), "value": keys_to_typing(value)}
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "C:\Users\vicenzzo.palma\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\selenium\webdriver\remote\webelement.py", line 508, in _execute
+    return self._parent.execute(command, params)
+           ~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^
+  File "C:\Users\vicenzzo.palma\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\selenium\webdriver\remote\webdriver.py", line 468, in execute
+    self.error_handler.check_response(response)
+    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^
+  File "C:\Users\vicenzzo.palma\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\selenium\webdriver\remote\errorhandler.py", line 232, in check_response
+    raise exception_class(message, screen, stacktrace)
+selenium.common.exceptions.NoSuchWindowException: Message: no such window: target window already closed
+from unknown error: web view not found
+  (Session info: chrome=148.0.7778.168)
+Stacktrace:
+	undetected_chromedriver!GetHandleVerifier [0x11d7123+10a23]
+	undetected_chromedriver!GetHandleVerifier [0x11d7254+10b54]
+	undetected_chromedriver!(No symbol) [0xff1e90]
+	undetected_chromedriver!(No symbol) [0xfd0923]
+	undetected_chromedriver!(No symbol) [0x1063afb]
+	undetected_chromedriver!(No symbol) [0x107a2a9]
+	undetected_chromedriver!(No symbol) [0x105d526]
+	undetected_chromedriver!(No symbol) [0x10308f9]
+	undetected_chromedriver!(No symbol) [0x10316b4]
+	undetected_chromedriver!GetHandleVerifier [0x1471ac4+2ab3c4]
+	undetected_chromedriver!GetHandleVerifier [0x146d0ed+2a69ed]
+	undetected_chromedriver!GetHandleVerifier [0x148e4f5+2c7df5]
+	undetected_chromedriver!GetHandleVerifier [0x11f1128+2aa28]
+	undetected_chromedriver!GetHandleVerifier [0x11f8bbd+324bd]
+	undetected_chromedriver!GetHandleVerifier [0x11dfb28+19428]
+	undetected_chromedriver!GetHandleVerifier [0x11dfcd5+195d5]
+	undetected_chromedriver!GetHandleVerifier [0x11c91cf+2acf]
+	KERNEL32!BaseThreadInitThunk [0x76cd7ba9+19]
+	ntdll!RtlInitializeExceptionChain [0x7789c3ab+6b]
+	ntdll!RtlClearBits [0x7789c32f+bf]
+
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "C:\Users\vicenzzo.palma\Documents\Wa Sender 3.7.0 Atualizado\RealezaSender\worker.py", line 267, in main
+    digitar_como_humano(caixa_texto, texto_enviar, driver=driver)
+    ~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\vicenzzo.palma\Documents\Wa Sender 3.7.0 Atualizado\RealezaSender\worker.py", line 72, in digitar_como_humano
+    driver.execute_script("arguments[0].focus();", elemento)
+    ~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\vicenzzo.palma\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\selenium\webdriver\remote\webdriver.py", line 578, in execute_script
+    return self.execute(command, {"script": script, "args": converted_args})["value"]
+           ~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\vicenzzo.palma\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\selenium\webdriver\remote\webdriver.py", line 468, in execute
+    self.error_handler.check_response(response)
+    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^
+  File "C:\Users\vicenzzo.palma\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\selenium\webdriver\remote\errorhandler.py", line 232, in check_response
+    raise exception_class(message, screen, stacktrace)
+selenium.common.exceptions.NoSuchWindowException: Message: no such window: target window already closed
+from unknown error: web view not found
+  (Session info: chrome=148.0.7778.168)
+Stacktrace:
+	undetected_chromedriver!GetHandleVerifier [0x11d7123+10a23]
+	undetected_chromedriver!GetHandleVerifier [0x11d7254+10b54]
+	undetected_chromedriver!(No symbol) [0xff1e90]
+	undetected_chromedriver!(No symbol) [0xfd0923]
+	undetected_chromedriver!(No symbol) [0x1063afb]
+	undetected_chromedriver!(No symbol) [0x107a2a9]
+	undetected_chromedriver!(No symbol) [0x105d526]
+	undetected_chromedriver!(No symbol) [0x10308f9]
+	undetected_chromedriver!(No symbol) [0x10316b4]
+	undetected_chromedriver!GetHandleVerifier [0x1471ac4+2ab3c4]
+	undetected_chromedriver!GetHandleVerifier [0x146d0ed+2a69ed]
+	undetected_chromedriver!GetHandleVerifier [0x148e4f5+2c7df5]
+	undetected_chromedriver!GetHandleVerifier [0x11f1128+2aa28]
+	undetected_chromedriver!GetHandleVerifier [0x11f8bbd+324bd]
+	undetected_chromedriver!GetHandleVerifier [0x11dfb28+19428]
+	undetected_chromedriver!GetHandleVerifier [0x11dfcd5+195d5]
+	undetected_chromedriver!GetHandleVerifier [0x11c91cf+2acf]
+	KERNEL32!BaseThreadInitThunk [0x76cd7ba9+19]
+	ntdll!RtlInitializeExceptionChain [0x7789c3ab+6b]
+	ntdll!RtlClearBits [0x7789c32f+bf]
+
+

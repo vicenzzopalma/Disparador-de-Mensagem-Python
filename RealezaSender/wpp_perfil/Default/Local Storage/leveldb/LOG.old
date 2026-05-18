@@ -1,0 +1,14 @@
+2026/05/13-17:18:02.018 3b3c Reusing MANIFEST C:\Users\vicenzzo.palma\Documents\teste\wpp_perfil\Default\Local Storage\leveldb/MANIFEST-000001
+2026/05/13-17:18:02.040 3b3c Recovering log #57
+2026/05/13-17:18:02.041 3b3c Level-0 table #60: started
+2026/05/13-17:18:02.054 3b3c Level-0 table #60: 27947 bytes OK
+2026/05/13-17:18:02.060 3b3c Delete type=0 #57
+2026/05/13-17:18:02.062 768 Compacting 4@0 + 1@1 files
+2026/05/13-17:18:02.082 768 Generated table #62@0: 2079 keys, 113187 bytes
+2026/05/13-17:18:02.082 768 Compacted 4@0 + 1@1 files => 113187 bytes
+2026/05/13-17:18:02.088 768 compacted to: files[ 0 1 1 0 0 0 0 ]
+2026/05/13-17:18:02.090 768 Delete type=2 #52
+2026/05/13-17:18:02.090 768 Delete type=2 #54
+2026/05/13-17:18:02.091 768 Delete type=2 #56
+2026/05/13-17:18:02.091 768 Delete type=2 #58
+2026/05/13-17:18:02.091 768 Delete type=2 #60

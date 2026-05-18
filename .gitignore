@@ -1,0 +1,7 @@
+﻿RealezaSender/wpp_perfil_*/
+ARQUIVOS MORTOS/
+__pycache__/
+*.db
+*.log
+*.exe
+*.dll
