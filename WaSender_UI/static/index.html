@@ -424,12 +424,12 @@
                             <input type="checkbox" ${acc.active ? 'checked' : ''} onchange="toggleAccount('${acc.id}')">
                             <span style="font-size: 0.85rem; font-weight: 600;">${acc.id}</span>
                         </div>
-                        <span id="badge-${acc.id}" style="font-size: 0.65rem; padding: 2px 6px; border-radius: 4px; background: ${acc.connected ? 'rgba(16, 185, 129, 0.2)' : 'rgba(239, 68, 68, 0.2)'}; color: ${acc.connected ? '#10b981' : '#ef4444'}; border: 1px solid ${acc.connected ? '#10b981' : '#ef4444'};">
-                            ${acc.connected ? 'CONECTADO' : 'NÃO CONECTADO'}
+                        <span id="badge-${acc.id}" style="font-size: 0.65rem; padding: 2px 6px; border-radius: 4px; background: rgba(255,255,255,0.1); color: #ccc; border: 1px solid #ccc;">
+                            CARREGANDO...
                         </span>
                     </div>
                     <button id="btn-${acc.id}" class="btn btn-outline" style="padding: 4px 8px; font-size: 0.7rem; justify-content: center;" onclick="connectAccount('${acc.id}', '${acc.perfil}')">
-                        <i data-lucide="qr-code" style="width: 12px;"></i> <span id="btn-text-${acc.id}">${acc.connected ? 'Reconectar / Atualizar' : 'Conectar Agora'}</span>
+                        <i data-lucide="monitor" style="width: 12px;"></i> <span id="btn-text-${acc.id}">Abrir Tela do WhatsApp</span>
                     </button>
                 </div>
             `).join('');
@@ -516,13 +516,22 @@
                     const badge = document.getElementById(`badge-${acc.id}`);
                     const btnText = document.getElementById(`btn-text-${acc.id}`);
                     if (badge) {
-                        badge.style.background = acc.connected ? 'rgba(16, 185, 129, 0.2)' : 'rgba(239, 68, 68, 0.2)';
-                        badge.style.color = acc.connected ? '#10b981' : '#ef4444';
-                        badge.style.borderColor = acc.connected ? '#10b981' : '#ef4444';
-                        badge.innerText = acc.connected ? 'CONECTADO' : 'NÃO CONECTADO';
-                    }
-                    if (btnText) {
-                        btnText.innerText = acc.connected ? 'Reconectar / Atualizar' : 'Conectar Agora';
+                        if (acc.status_label === 'Banido') {
+                            badge.style.background = 'rgba(153, 27, 27, 0.3)';
+                            badge.style.color = '#fca5a5';
+                            badge.style.borderColor = '#ef4444';
+                            badge.innerText = '⚠️ BANIDO (BLOQUEADO)';
+                        } else if (acc.status_label === 'Carregando' || acc.status_label === 'ErroNavegador') {
+                            badge.style.background = 'rgba(255, 255, 255, 0.1)';
+                            badge.style.color = '#ccc';
+                            badge.style.borderColor = '#ccc';
+                            badge.innerText = acc.status_label.toUpperCase();
+                        } else {
+                            badge.style.background = acc.connected ? 'rgba(16, 185, 129, 0.2)' : 'rgba(239, 68, 68, 0.2)';
+                            badge.style.color = acc.connected ? '#10b981' : '#ef4444';
+                            badge.style.borderColor = acc.connected ? '#10b981' : '#ef4444';
+                            badge.innerText = acc.status_label ? acc.status_label.toUpperCase() : (acc.connected ? 'CONECTADO' : 'DESCONECTADO');
+                        }
                     }
                 });
             }
