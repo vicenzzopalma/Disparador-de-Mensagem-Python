@@ -192,15 +192,31 @@ def report_progress():
 
     return jsonify({"status": "ok"})
 
+def kill_existing_daemons():
+    import subprocess
+    try:
+        # Clear command files
+        for acc in campaign_state["accounts"]:
+            dir_c = os.path.join(REALEZA_DIR, f"dados_{acc['id']}")
+            if os.path.exists(dir_c):
+                for f_name in ["cmd_send.json", "cmd_stop.json", "cmd_pause.json", "cmd_show.json"]:
+                    f_path = os.path.join(dir_c, f_name)
+                    if os.path.exists(f_path):
+                        try: os.remove(f_path)
+                        except: pass
+
+        if os.name == 'nt':
+            ps_cmd = '& { Get-CimInstance Win32_Process -Filter "CommandLine like \'%wpp_perfil%\'" | ForEach-Object { Stop-Process $_.ProcessId -Force } }'
+            subprocess.run(['powershell', '-NoProfile', '-Command', ps_cmd], capture_output=True)
+        else:
+            subprocess.run("pkill -f wpp_perfil", shell=True, capture_output=True)
+    except Exception as e:
+        print(f"Erro ao limpar daemons antigos: {e}")
+
 @app.route('/api/reload_daemons', methods=['POST'])
 def reload_daemons():
     global daemons
-    for p in daemons:
-        try:
-            p.terminate()
-            subprocess.run(['taskkill', '/F', '/T', '/PID', str(p.pid)], capture_output=True)
-        except:
-            pass
+    kill_existing_daemons()
     daemons.clear()
     
     for acc in campaign_state["accounts"]:
@@ -214,6 +230,7 @@ def reload_daemons():
         p = subprocess.Popen(cmd, cwd=REALEZA_DIR, creationflags=subprocess.CREATE_NO_WINDOW if os.name == 'nt' else 0)
         daemons.append(p)
         campaign_state["logs"].append(f"🔄 Daemon {acc['id']} recarregado.")
+        time.sleep(5)
         
     return jsonify({"status": "reloaded"})
 
@@ -297,6 +314,7 @@ def run_orchestrator():
 daemons = []
 def launch_daemons():
     if os.environ.get("WERKZEUG_RUN_MAIN") == "true" or not app.debug:
+        kill_existing_daemons()
         for acc in campaign_state["accounts"]:
             cmd = [
                 sys.executable, os.path.join(REALEZA_DIR, "daemon_worker.py"),
@@ -308,6 +326,7 @@ def launch_daemons():
             p = subprocess.Popen(cmd, cwd=REALEZA_DIR, creationflags=subprocess.CREATE_NO_WINDOW if os.name == 'nt' else 0)
             daemons.append(p)
             print(f"Lançado Daemon para {acc['id']}")
+            time.sleep(5)
 
 if __name__ == '__main__':
     launch_daemons()

@@ -8,3 +8,60 @@
 {"timestamp": "2026-05-15T14:49:21.913931", "tipo": "SUCESSO", "numero": "5583981052164"}
 {"timestamp": "2026-05-15T14:50:22.799653", "tipo": "SUCESSO", "numero": "5582982301908"}
 {"timestamp": "2026-05-15T14:51:24.627508", "tipo": "FALHA", "numero": "5582982299181", "motivo": "Timeout ao carregar o chat", "tentativa": 1}
+{"timestamp": "2026-05-19T10:28:03.476309", "tipo": "FALHA", "numero": "5511930525665", "motivo": "Timeout ao carregar o chat", "tentativa": 1}
+{"timestamp": "2026-05-19T10:29:29.899085", "tipo": "SUCESSO", "numero": "5511930709110"}
+{"timestamp": "2026-05-19T10:30:45.626546", "tipo": "SUCESSO", "numero": "5511932793176"}
+{"timestamp": "2026-05-19T10:31:47.726868", "tipo": "SUCESSO", "numero": "5511932794070"}
+{"timestamp": "2026-05-19T10:32:51.308721", "tipo": "FALHA", "numero": "5511934992654", "motivo": "Timeout ao carregar o chat", "tentativa": 1}
+{"timestamp": "2026-05-19T10:34:05.123185", "tipo": "SUCESSO", "numero": "5511937709037"}
+{"timestamp": "2026-05-19T10:34:58.337741", "tipo": "SUCESSO", "numero": "5511941551087"}
+{"timestamp": "2026-05-19T10:36:02.730083", "tipo": "SUCESSO", "numero": "5511941836612"}
+{"timestamp": "2026-05-19T10:37:18.657965", "tipo": "SUCESSO", "numero": "5511943108539"}
+{"timestamp": "2026-05-19T10:38:30.341094", "tipo": "SUCESSO", "numero": "5511943690969"}
+{"timestamp": "2026-05-19T10:39:42.903177", "tipo": "SUCESSO", "numero": "5511944455150"}
+{"timestamp": "2026-05-19T10:40:46.865689", "tipo": "SUCESSO", "numero": "5511944988598"}
+{"timestamp": "2026-05-19T10:41:45.099645", "tipo": "SUCESSO", "numero": "5511945342155"}
+{"timestamp": "2026-05-19T10:42:43.813644", "tipo": "FALHA", "numero": "5511945777535", "motivo": "Timeout ao carregar o chat", "tentativa": 1}
+{"timestamp": "2026-05-19T10:43:53.159822", "tipo": "SUCESSO", "numero": "5511950467908"}
+{"timestamp": "2026-05-19T10:44:42.126637", "tipo": "SUCESSO", "numero": "5511950803038"}
+{"timestamp": "2026-05-19T10:45:46.449266", "tipo": "SUCESSO", "numero": "5511953072096"}
+{"timestamp": "2026-05-19T10:46:50.403259", "tipo": "SUCESSO", "numero": "5511955878021"}
+{"timestamp": "2026-05-19T10:48:04.223795", "tipo": "SUCESSO", "numero": "5511956846257"}
+{"timestamp": "2026-05-19T10:51:20.263817", "tipo": "SUCESSO", "numero": "5511957851283"}
+{"timestamp": "2026-05-19T10:52:17.271309", "tipo": "SUCESSO", "numero": "5511959253755"}
+{"timestamp": "2026-05-19T10:53:15.579702", "tipo": "SUCESSO", "numero": "5511961716441"}
+{"timestamp": "2026-05-19T10:54:04.933600", "tipo": "SUCESSO", "numero": "5511963018001"}
+{"timestamp": "2026-05-19T10:55:03.910395", "tipo": "SUCESSO", "numero": "5511963368292"}
+{"timestamp": "2026-05-19T10:56:04.697159", "tipo": "SUCESSO", "numero": "5511963394795"}
+{"timestamp": "2026-05-19T10:57:01.202428", "tipo": "SUCESSO", "numero": "5511963811441"}
+{"timestamp": "2026-05-19T10:58:02.708786", "tipo": "FALHA", "numero": "5511963875632", "motivo": "Timeout ao carregar o chat", "tentativa": 1}
+{"timestamp": "2026-05-19T10:59:10.874737", "tipo": "SUCESSO", "numero": "5511964704725"}
+{"timestamp": "2026-05-19T11:00:17.935374", "tipo": "SUCESSO", "numero": "5511966004147"}
+{"timestamp": "2026-05-19T11:01:15.529660", "tipo": "SUCESSO", "numero": "5511966026178"}
+{"timestamp": "2026-05-19T11:02:07.443304", "tipo": "SUCESSO", "numero": "5511966509642"}
+{"timestamp": "2026-05-19T11:03:04.789235", "tipo": "SUCESSO", "numero": "5511968814045"}
+{"timestamp": "2026-05-19T11:04:02.841577", "tipo": "SUCESSO", "numero": "5511969210305"}
+{"timestamp": "2026-05-19T11:05:07.309258", "tipo": "SUCESSO", "numero": "5511969286281"}
+{"timestamp": "2026-05-19T11:06:03.736559", "tipo": "SUCESSO", "numero": "5511969298056"}
+{"timestamp": "2026-05-19T11:07:08.345716", "tipo": "SUCESSO", "numero": "5511970791521"}
+{"timestamp": "2026-05-19T11:08:06.077938", "tipo": "SUCESSO", "numero": "5511971162545"}
+{"timestamp": "2026-05-19T11:09:03.027226", "tipo": "SUCESSO", "numero": "5511971807784"}
+{"timestamp": "2026-05-19T11:10:04.332532", "tipo": "SUCESSO", "numero": "5511972790690"}
+{"timestamp": "2026-05-19T11:11:09.047790", "tipo": "SUCESSO", "numero": "5511972823176"}
+{"timestamp": "2026-05-19T11:13:50.891146", "tipo": "SUCESSO", "numero": "5511973983710"}
+{"timestamp": "2026-05-19T11:14:54.652742", "tipo": "SUCESSO", "numero": "5511974514287"}
+{"timestamp": "2026-05-19T11:16:16.539779", "tipo": "SUCESSO", "numero": "5511975520967"}
+{"timestamp": "2026-05-19T11:17:22.426184", "tipo": "SUCESSO", "numero": "5511975538794"}
+{"timestamp": "2026-05-19T11:18:18.854143", "tipo": "SUCESSO", "numero": "5511975564361"}
+{"timestamp": "2026-05-19T11:19:28.430876", "tipo": "SUCESSO", "numero": "5511976419743"}
+{"timestamp": "2026-05-19T11:20:40.127237", "tipo": "SUCESSO", "numero": "5511976428553"}
+{"timestamp": "2026-05-19T11:21:48.931082", "tipo": "SUCESSO", "numero": "5511976491558"}
+{"timestamp": "2026-05-19T11:22:56.045786", "tipo": "SUCESSO", "numero": "5511981582332"}
+{"timestamp": "2026-05-19T11:24:06.447677", "tipo": "FALHA", "numero": "5511985325252", "motivo": "Timeout ao carregar o chat", "tentativa": 1}
+{"timestamp": "2026-05-19T11:25:07.835514", "tipo": "SUCESSO", "numero": "5511986737268"}
+{"timestamp": "2026-05-19T11:26:11.303235", "tipo": "FALHA", "numero": "5511986737956", "motivo": "Timeout ao carregar o chat", "tentativa": 1}
+{"timestamp": "2026-05-19T11:27:23.257549", "tipo": "SUCESSO", "numero": "5511987391893"}
+{"timestamp": "2026-05-19T11:28:32.108934", "tipo": "FALHA", "numero": "5511989020219", "motivo": "Timeout ao carregar o chat", "tentativa": 1}
+{"timestamp": "2026-05-19T11:29:45.092116", "tipo": "SUCESSO", "numero": "5511989021464"}
+{"timestamp": "2026-05-19T11:32:45.567942", "tipo": "FALHA", "numero": "5511930525665", "motivo": "Timeout ao carregar o chat", "tentativa": 2}
+{"timestamp": "2026-05-19T11:32:45.572054", "tipo": "DLQ", "numero": "5511930525665", "status": "Adicionado à Dead-Letter Queue após esgotamento de retentativas"}

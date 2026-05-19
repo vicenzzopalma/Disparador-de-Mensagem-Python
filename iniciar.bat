@@ -18,7 +18,7 @@ if errorlevel 1 (
 
 :: Criar ambiente virtual se nao existir
 if not exist .venv (
-    echo [1/3] Criando ambiente virtual Python (.venv)...
+    echo [1/3] Criando ambiente virtual Python .venv...
     python -m venv .venv
     if errorlevel 1 (
         echo [ERRO] Falha ao criar o ambiente virtual.

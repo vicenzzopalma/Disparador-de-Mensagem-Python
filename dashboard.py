@@ -77,7 +77,7 @@ class SessionDashboard:
         processados = self.enviados + self.falhas + self.pulados
         percentual = processados / self.total if self.total > 0 else 0
         preenchido = int(largura * percentual)
-        barra = "█" * preenchido + "░" * (largura - preenchido)
+        barra = "#" * preenchido + "-" * (largura - preenchido)
         return f"[{barra}] {percentual*100:.1f}%"
 
     def imprimir(self, numero_atual: str = "", acao: str = ""):
